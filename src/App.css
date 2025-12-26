@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  background: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: black;
+  position: sticky;
+  top: 0;
+}
+
+.navbar h2 {
+  color: red;
+}
+
+.navbar button {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.banner {
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+}
+
+.banner h1 {
+  font-size: 48px;
+}
+
+.row {
+  display: flex;
+  overflow-x: auto;
+  padding: 20px;
+}
+
+.row img {
+  margin-right: 12px;
+  height: 250px;
+  transition: transform 0.3s;
+}
+
+.row img:hover {
+  transform: scale(1.1);
+}
+
+.section {
+  margin-left: 20px;
+}
