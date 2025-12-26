@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background: #111;
+  background-color: #111;
   color: white;
   font-family: Arial, sans-serif;
 }
@@ -12,6 +12,7 @@ body {
   background: black;
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 
 .navbar h2 {
@@ -32,10 +33,18 @@ body {
   background-size: cover;
   background-position: center;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .banner h1 {
   font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.section {
+  margin-left: 20px;
 }
 
 .row {
@@ -44,16 +53,26 @@ body {
   padding: 20px;
 }
 
-.row img {
-  margin-right: 12px;
-  height: 250px;
+.card {
+  width: 180px;
+  margin-right: 15px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 6px;
   transition: transform 0.3s;
 }
 
-.row img:hover {
+.card img:hover {
   transform: scale(1.1);
 }
 
-.section {
-  margin-left: 20px;
+.card p {
+  font-size: 14px;
+  margin-top: 5px;
 }
