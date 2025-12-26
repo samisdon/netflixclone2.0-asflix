@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const API_KEY = "bKflKeJmgG9wu4f1UPVYpFl5IVpaMBukW5LsrlzX";
-const BASE = "https://api.watchmode.com/v1";
+const BASE_URL = "https://api.watchmode.com/v1";
 
 export default function App() {
   const [titles, setTitles] = useState([]);
@@ -10,13 +10,14 @@ export default function App() {
 
   useEffect(() => {
     fetch(
-      `${BASE}/list-titles/?apiKey=${API_KEY}&types=${type}&providers=netflix&limit=20`
+      `${BASE_URL}/list-titles/?apiKey=${API_KEY}&types=${type}&providers=netflix&limit=25`
     )
       .then(res => res.json())
       .then(data => {
-        setTitles(data.titles);
+        const validTitles = data.titles.filter(t => t.poster);
+        setTitles(validTitles);
         setBanner(
-          data.titles[Math.floor(Math.random() * data.titles.length)]
+          validTitles[Math.floor(Math.random() * validTitles.length)]
         );
       });
   }, [type]);
@@ -36,9 +37,7 @@ export default function App() {
       {banner && (
         <header
           className="banner"
-          style={{
-            backgroundImage: `url(${banner.poster})`
-          }}
+          style={{ backgroundImage: `url(${banner.poster})` }}
         >
           <h1>{banner.title}</h1>
           <p>Available on Netflix</p>
@@ -52,11 +51,14 @@ export default function App() {
 
       <div className="row">
         {titles.map(item => (
-          <img
+          <div
+            className="card"
             key={item.id}
-            src={item.poster}
-            alt={item.title}
-          />
+            onClick={() => window.open(item.web_url, "_blank")}
+          >
+            <img src={item.poster} alt={item.title} />
+            <p>{item.title}</p>
+          </div>
         ))}
       </div>
     </>
